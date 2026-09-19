@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Selamat Ulang Tahun 🎂</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --blush:#fbe6ec;
+  --cream:#fff8f4;
+  --rose:#e2a3b6;
+  --mauve:#b8677f;
+  --plum:#4a2b39;
+  --plum-soft:#7a5568;
+  --gold:#cf9a5f;
+  --line: rgba(74,43,57,0.14);
+}
+
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top,0px);
+  padding-bottom: env(safe-area-inset-bottom,0px);
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top,0px);
+  height:100%;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100%;
+
+  background:
+    radial-gradient(
+      circle at 15% 8%,
+      rgba(226,163,182,0.35),
+      transparent 45%
+    ),
+
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(207,154,95,0.18),
+      transparent 40%
+    ),
+
+    var(--cream);
+
+  color:var(--plum);
+
+  font-family:'Quicksand', sans-serif;
+
+  overflow-x:hidden;
+
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,.display{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  margin:0;
+}
+
+a{
+  color:inherit;
+}
+
+
+/* floating petals */
+
+#petals{
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:1;
+
+  overflow:hidden;
+}
+
+.petal{
+  position:absolute;
+
+  top:-40px;
+
+  font-size:16px;
+
+  opacity:0.55;
+
+  animation:fall linear infinite;
+
+  filter:
+    drop-shadow(
+      0 1px 1px
+      rgba(74,43,57,0.08)
+    );
+}
+
+@keyframes fall{
+
+  0%{
+    transform:
+      translateY(-5vh)
+      translateX(0)
+      rotate(0deg);
+  }
+
+  100%{
+    transform:
+      translateY(105vh)
+      translateX(var(--drift,20px))
+      rotate(180deg);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce){
+
+  .petal{
+    animation:none;
+    display:none;
+  }
+
+  *{
+    animation-duration:0.001ms !important;
+  }
+
+}
+
+
+main{
+
+  position:relative;
+
+  z-index:2;
+
+  max-width:640px;
+
+  margin:0 auto;
+
+  padding:
+    12vh
+    24px
+    10vh;
+}
+
+
+/* HERO */
+
+.hero{
+
+  text-align:center;
+
+  padding-bottom:8vh;
+}
+
+.eyebrow-free-label{
+
+  font-size:15px;
+
+  color:var(--plum-soft);
+
+  letter-spacing:0.02em;
+}
+
+.name-edit{
+
+  display:inline-block;
+
+  font-size:
+    clamp(
+      40px,
+      11vw,
+      68px
+    );
+
+  line-height:1.1;
+
+  color:var(--mauve);
+
+  border-bottom:
+    2px dashed transparent;
+
+  padding:4px 6px;
+
+  outline:none;
+
+  cursor:text;
+
+  transition:
+    border-color .2s ease,
+    background .2s ease;
+
+  border-radius:6px;
+}
+
+.name-edit:hover,
+.name-edit:focus{
+
+  border-color:var(--rose);
+
+  background:
+    rgba(226,163,182,0.12);
+}
+
+.hero h1{
+
+  font-size:
+    clamp(
+      28px,
+      6vw,
+      40px
+    );
+
+  margin-top:6px;
+
+  color:var(--plum);
+}
+
+.hint{
+
+  margin-top:18px;
+
+  font-size:13px;
+
+  color:var(--plum-soft);
+
+  opacity:0.75;
+}
+
+
+/* BACKGROUND PHOTO */
+
+.hero-photo{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100vw;
+
+  height:
+    min(
+      100vh,
+      780px
+    );
+
+  z-index:0;
+
+  overflow:hidden;
+
+  cursor:pointer;
+}
+
+.hero-photo img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  object-position:center 25%;
+
+  display:none;
+
+  opacity:0.75;
+
+  filter:saturate(0.95);
+}
+
+.hero-photo.has-img img{
+
+  display:block;
+}
+
+.hero-photo::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,248,244,0.05) 0%,
+      rgba(255,248,244,0.25) 68%,
+      var(--cream) 97%
+    );
+
+  pointer-events:none;
+}
+
+.hero-photo .hero-photo-hint{
+
+  display:none;
+
+  position:absolute;
+
+  bottom:14%;
+
+  left:0;
+  right:0;
+
+  text-align:center;
+
+  font-size:13px;
+
+  color:var(--plum-soft);
+
+  z-index:1;
+
+  padding:8px 16px;
+}
+
+.hero-photo.has-img .hero-photo-hint{
+
+  opacity:0;
+
+  transition:
+    opacity .3s ease;
+}
+
+.hero-photo.has-img:hover .hero-photo-hint{
+
+  opacity:0.7;
+}
+
+
+/* HERO TEXT */
+
+.hero-text-card{
+
+  position:relative;
+
+  z-index:1;
+
+  display:inline-block;
+
+  background:
+    rgba(
+      255,
+      248,
+      244,
+      0.78
+    );
+
+  backdrop-filter:blur(4px);
+
+  border-radius:20px;
+
+  padding:
+    22px
+    28px;
+
+  box-shadow:
+    0 10px 30px -16px
+    rgba(74,43,57,0.25);
+}
+
+
+/* ENVELOPE */
+
+.envelope-wrap{
+
+  position:relative;
+
+  z-index:1;
+
+  display:flex;
+
+  justify-content:center;
+
+  margin:
+    6vh
+    0
+    4vh;
+}
+
+.envelope-inner{
+
+  text-align:center;
+}
+
+.envelope{
+
+  position:relative;
+
+  z-index:1;
+
+  width:
+    min(
+      320px,
+      78vw
+    );
+
+  height:200px;
+
+  cursor:pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+.envelope-body{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      var(--blush)
+    );
+
+  border-radius:10px;
+
+  box-shadow:
+    0 18px 40px -20px
+    rgba(74,43,57,0.35),
+
+    0 0 0 1px
+    var(--line);
+
+  overflow:hidden;
+}
+
+.envelope-flap{
+
+  position:absolute;
+
+  top:0;
+  left:0;
+  right:0;
+
+  height:100%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--rose),
+      var(--mauve)
+    );
+
+  clip-path:
+    polygon(
+      0 0,
+      50% 55%,
+      100% 0
+    );
+
+  transform-origin:top;
+
+  transition:
+    transform .7s
+    cubic-bezier(.6,0,.3,1);
+
+  z-index:3;
+}
+
+.envelope.open
+.envelope-flap{
+
+  transform:
+    rotateX(180deg);
+}
+
+.envelope-seal{
+
+  position:absolute;
+
+  top:38%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:46px;
+  height:46px;
+
+  border-radius:50%;
+
+  background:var(--gold);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:#fff8f4;
+
+  font-size:20px;
+
+  box-shadow:
+    0 4px 10px
+    rgba(207,154,95,0.5);
+
+  z-index:4;
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.envelope.open
+.envelope-seal{
+
+  opacity:0;
+
+  transform:
+    translate(-50%,-50%)
+    scale(0.5);
+}
+
+.envelope-letter{
+
+  position:absolute;
+
+  left:8%;
+  right:8%;
+
+  bottom:-10%;
+
+  height:90%;
+
+  background:#fffdfb;
+
+  border-radius:
+    6px
+    6px
+    0
+    0;
+
+  box-shadow:
+    0 -6px 18px
+    rgba(74,43,57,0.12);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  padding:20px;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:19px;
+
+  color:var(--plum-soft);
+
+  transition:
+    transform .8s
+    cubic-bezier(.6,0,.2,1)
+    .1s;
+
+  transform:
+    translateY(0);
+
+  z-index:2;
+}
+
+.envelope.open
+.envelope-letter{
+
+  transform:
+    translateY(-38%);
+}
+
+.envelope-caption{
+
+  position:absolute;
+
+  bottom:10px;
+
+  left:0;
+  right:0;
+
+  text-align:center;
+
+  font-size:11px;
+
+  letter-spacing:0.02em;
+
+  color:var(--plum-soft);
+
+  z-index:2;
+
+  pointer-events:none;
+
+  transition:
+    opacity .4s ease;
+}
+
+.envelope.open
+.envelope-caption{
+
+  opacity:0;
+}
+
+
+/* SECTION */
+
+section{
+
+  margin-top:6vh;
+
+  opacity:0;
+
+  transform:
+    translateY(10px);
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+section.revealed{
+
+  opacity:1;
+
+  transform:none;
+}
+
+.card{
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.65
+    );
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:14px;
+
+  padding:
+    32px
+    28px;
+}
+
+.card h2{
+
+  font-size:24px;
+
+  color:var(--mauve);
+
+  margin-bottom:14px;
+}
+
+.message-edit{
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:23px;
+
+  font-weight:500;
+
+  line-height:1.7;
+
+  color:var(--plum);
+
+  outline:none;
+
+  min-height:120px;
+
+  border-radius:8px;
+
+  padding:4px 6px;
+
+  transition:
+    background .2s ease;
+  text-align: justify;
+}
+
+.message-edit:hover,
+.message-edit:focus{
+
+  background:
+    rgba(
+      226,
+      163,
+      182,
+      0.1
+    );
+}
+
+
+/* MEMORIES */
+
+.memories{
+
+  margin-top:6vh;
+}
+
+.memory-list{
+
+  list-style:none;
+
+  margin:0;
+
+  padding:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+}
+
+.memory-list li{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:10px;
+
+  font-size:16px;
+
+  padding:
+    10px
+    4px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+.memory-list li:last-child{
+
+  border-bottom:none;
+}
+
+.memory-list li::before{
+
+  content:"♡";
+
+  color:var(--rose);
+
+  font-size:16px;
+
+  line-height:1.5;
+
+  flex-shrink:0;
+}
+
+.memory-edit{
+
+  outline:none;
+
+  flex:1;
+
+  border-radius:6px;
+
+  padding:
+    2px
+    4px;
+}
+
+.memory-edit:hover,
+.memory-edit:focus{
+
+  background:
+    rgba(
+      226,
+      163,
+      182,
+      0.1
+    );
+}
+
+.add-memory{
+
+  margin-top:14px;
+
+  font-size:14px;
+
+  color:var(--mauve);
+
+  background:none;
+
+  border:
+    1px dashed
+    var(--rose);
+
+  padding:
+    8px
+    16px;
+
+  border-radius:20px;
+
+  cursor:pointer;
+
+  font-family:
+    'Quicksand',
+    sans-serif;
+
+  transition:
+    background .2s ease;
+}
+
+.add-memory:hover{
+
+  background:
+    rgba(
+      226,
+      163,
+      182,
+      0.15
+    );
+}
+
+
+/* PHOTO GALLERY */
+
+.photo-zone{
+
+  margin-top:6vh;
+
+  text-align:center;
+}
+
+.polaroid-stage{
+
+  position:relative;
+
+  width:100%;
+
+  max-width:510px;
+
+  height:510px;
+
+  margin:
+    10px
+    auto
+    6px;
+
+  perspective:1200px;
+}
+
+.polaroid{
+  position:absolute;
+  inset:0;
+
+  background:#fffdfb;
+  border-radius:8px;
+
+  padding:14px;
+
+  box-shadow:
+    0 14px 30px -14px
+    rgba(74,43,57,0.4),
+    0 0 0 1px var(--line);
+
+  cursor:grab;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  transform-style:preserve-3d;
+
+  transition:
+    transform .6s cubic-bezier(.6,0,.25,1),
+    opacity .5s ease;
+
+  user-select:none;
+}
+
+.polaroid:active{
+
+  cursor:grabbing;
+}
+
+.polaroid .frame{
+  width:100%;
+  height:calc(100% - 90px);
+
+  border-radius:2px;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(226,163,182,0.18) 0 10px,
+      rgba(255,255,255,0.4) 10px 20px
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  flex-shrink:0;
+}
+
+.polaroid .frame img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  display:none;
+}
+
+.polaroid.has-img
+.frame img{
+
+  display:block;
+}
+
+.polaroid.has-img
+.frame-placeholder{
+
+  display:none;
+}
+
+.frame-placeholder{
+
+  font-size:13px;
+
+  color:var(--plum-soft);
+
+  padding:16px;
+}
+
+.polaroid .caption{
+  position:static;
+
+  width:100%;
+  height:90px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:18px;
+  font-weight:500;
+  line-height:1.25;
+
+  color:var(--plum-soft);
+
+  padding:8px 12px;
+
+  outline:none;
+
+  flex-shrink:0;
+}
+.polaroid .remove-photo{
+
+  position:absolute;
+
+  top:8px;
+  right:8px;
+
+  width:24px;
+  height:24px;
+
+  border-radius:50%;
+
+  background:
+    rgba(
+      74,
+      43,
+      57,
+      0.55
+    );
+
+  color:#fff;
+
+  border:none;
+
+  font-size:13px;
+
+  line-height:1;
+
+  cursor:pointer;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  z-index:5;
+}
+
+.polaroid.has-img
+.remove-photo{
+
+  display:flex;
+}
+
+
+/* DOTS */
+
+.gallery-dots{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:6px;
+
+  margin-top:14px;
+}
+
+.gallery-dots span{
+
+  width:6px;
+
+  height:6px;
+
+  border-radius:50%;
+
+  background:var(--line);
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.gallery-dots span.active{
+
+  background:var(--rose);
+
+  transform:scale(1.3);
+}
+
+.gallery-hint{
+
+
+  font-size:16px;
+
+  font-weight:600;
+
+  color:var(--plum);
+
+  opacity:1;
+
+  margin-top:10px;
+
+  letter-spacing:0.2px;
+}
+
+.add-photo{
+
+  margin-top:16px;
+
+  font-size:14px;
+
+  color:var(--mauve);
+
+  background:none;
+
+  border:
+    1px dashed
+    var(--rose);
+
+  padding:
+    8px
+    16px;
+
+  border-radius:20px;
+
+  cursor:pointer;
+
+  font-family:
+    'Quicksand',
+    sans-serif;
+
+  transition:
+    background .2s ease;
+}
+
+.add-photo:hover{
+
+  background:
+    rgba(
+      226,
+      163,
+      182,
+      0.15
+    );
+}
+
+
+/* FOOTER */
+
+footer{
+
+  margin-top:8vh;
+
+  text-align:center;
+}
+
+.signature{
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-style:italic;
+
+  font-size:20px;
+
+  color:var(--plum-soft);
+}
+
+.from-edit{
+
+  outline:none;
+
+  border-radius:6px;
+
+  padding:
+    2px
+    6px;
+}
+
+.from-edit:hover,
+.from-edit:focus{
+
+  background:
+    rgba(
+      226,
+      163,
+      182,
+      0.1
+    );
+}
+
+
+/* CONFETTI */
+
+.confetti-piece{
+
+  position:fixed;
+
+  top:-20px;
+
+  z-index:20;
+
+  pointer-events:none;
+
+  font-size:18px;
+
+  animation:
+    confetti-fall
+    2.6s
+    ease-in
+    forwards;
+}
+
+@keyframes confetti-fall{
+
+  0%{
+
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity:1;
+  }
+
+  100%{
+
+    transform:
+      translateY(100vh)
+      rotate(400deg);
+
+    opacity:0;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width:420px){
+
+  main{
+    padding-top:10vh;
+  }
+
+  .card{
+    padding:
+      24px
+      18px;
+  }
+
+  .polaroid-stage{
+    height:430px;
+  }
+
+  .polaroid .frame{
+    height:calc(100% - 90px);
+  }
+
+  .polaroid .caption{
+    height:90px;
+    font-size:17px;
+    padding:8px 10px;
+  }
+
+}
+
+
+
+/* MUSIC */
+
+#music-toggle{
+
+  position:fixed;
+
+  top:
+    calc(
+      18px +
+      env(
+        safe-area-inset-top,
+        0px
+      )
+    );
+
+  right:18px;
+
+  z-index:30;
+
+  width:44px;
+
+  height:44px;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.85
+    );
+
+  backdrop-filter:
+    blur(6px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 6px 16px -8px
+    rgba(
+      74,
+      43,
+      57,
+      0.35
+    );
+
+  transition:
+    transform .2s ease;
+}
+
+#music-toggle:active{
+
+  transform:
+    scale(0.92);
+}
+
+#music-toggle.playing{
+
+  animation:
+    pulse-soft
+    2.4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes pulse-soft{
+
+  0%,100%{
+
+    box-shadow:
+      0 6px 16px -8px
+      rgba(
+        74,
+        43,
+        57,
+        0.35
+      );
+  }
+
+  50%{
+
+    box-shadow:
+      0 6px 20px -6px
+      rgba(
+        226,
+        163,
+        182,
+        0.7
+      );
+  }
+
+}
+/* ============================= */
+/* LAYAR PEMBUKA MUSIK */
+/* ============================= */
+
+#music-start {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(255, 248, 244, 0.96);
+  backdrop-filter: blur(10px);
+
+  transition: opacity 0.5s ease;
+}
+
+.music-start-box {
+  text-align: center;
+  padding: 35px;
+}
+
+.music-icon {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.music-start-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  color: var(--mauve);
+  margin: 0 0 8px;
+}
+
+.music-start-box p {
+  font-size: 16px;
+  color: var(--plum-soft);
+  margin-bottom: 25px;
+}
+
+#start-button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 30px;
+
+  background: var(--mauve);
+  color: white;
+
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(74,43,57,0.2);
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- LAYAR PEMBUKA MUSIK -->
+<div id="music-start">
+  <div class="music-start-box">
+    <div class="music-icon">🎵</div>
+
+    <h2>Untukmu ❤️</h2>
+
+    <p>Ada sesuatu yang ingin aku berikan...</p>
+
+    <button id="start-button">
+      Buka Sekarang 💌
+    </button>
+  </div>
+</div>
+
+<div
+  id="petals"
+  aria-hidden="true"
+></div>
+
+
+<div
+  class="hero-photo has-img"
+  id="hero-photo"
+  aria-hidden="true"
+>
+
+  <img
+    id="hero-photo-img"
+    src="foto/background.jpeg"
+    alt=""
+  >
+
+</div>
+
+
+<button
+  id="music-toggle"
+  type="button"
+  aria-label="Putar musik"
+  title="Putar musik"
+>
+  🎵
+</button>
+
+<audio
+  id="bgm"
+  src="./musik.mp3/musik.mp3"
+  loop
+  preload="auto">
+></audio>
+
+
+<main>
+
+
+  <!-- HERO -->
+
+  <section
+    class="hero revealed"
+    style="margin-top:0;"
+  >
+
+    <div class="hero-text-card">
+
+      <div class="eyebrow-free-label">
+        Untuk seseorang yang paling spesial
+      </div>
+
+      <h1>
+
+        Selamat Ulang Tahun,<br>
+
+        <span
+          class="name-edit"
+          contenteditable="true"
+          data-key="bday-name"
+          spellcheck="false"
+        >
+          Sayang
+        </span>
+
+      </h1>
+
+    </div>
+
+  </section>
+
+
+  <!-- ENVELOPE -->
+
+  <div class="envelope-wrap">
+
+    <div class="envelope-inner">
+
+      <div
+        class="envelope"
+        id="envelope"
+      >
+
+        <div class="envelope-letter">
+          Ada sepucuk surat kecil untukmu...
+        </div>
+
+        <div class="envelope-body"></div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="envelope-seal">
+          ♡
+        </div>
+
+        <div class="envelope-caption">
+          Ketuk amplopnya untuk membuka 💌
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SURAT -->
+
+  <section id="letter-section">
+
+    <div class="card">
+
+      <h2>
+        Sepucuk Surat
+      </h2>
+
+      <div
+        class="message-edit"
+        contenteditable="true"
+        data-key="bday-message"
+        spellcheck="false"
+      >
+        Hari ini adalah harimu, hari untuk merayakan semua hal kecil dan besar yang membuatmu jadi kamu. Terima kasih sudah menjadi bagian dari hidupku, mengisi hari-hari biasa dengan hal-hal yang terasa istimewa. Semoga tahun ini membawa lebih banyak tawa, lebih banyak mimpi yang tercapai, dan lebih banyak momen bahagia bersama. Aku sayang kamu, hari ini dan selalu.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORIES -->
+
+  <section
+    class="memories"
+    id="memories-section"
+  >
+
+    <div class="card">
+
+      <h2>
+        Hal-Hal yang Kusuka Darimu
+      </h2>
+
+      <ul
+        class="memory-list"
+        id="memory-list"
+      >
+
+        <li>
+          <span
+            class="memory-edit"
+            contenteditable="true"
+            spellcheck="false"
+          >
+            Kamu ❤️
+          </span>
+        </li>
+
+        <li>
+          <span
+            class="memory-edit"
+            contenteditable="true"
+            spellcheck="false"
+          >
+            Itu Kamu ❤️❤️
+          </span>
+        </li>
+
+        <li>
+          <span
+            class="memory-edit"
+            contenteditable="true"
+            spellcheck="false"
+          >
+            Dan Ya Semua tentang Kamu ❤️❤️❤️
+          </span>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOTO -->
+
+  <section
+    class="photo-zone"
+    id="photo-section"
+  >
+
+    <div class="card">
+
+      <h2>
+        Kenangan - Kenangan Kita
+      </h2>
+
+      <div
+        class="polaroid-stage"
+        id="polaroid-stage"
+      ></div>
+
+      <div
+        class="gallery-dots"
+        id="gallery-dots"
+      ></div>
+
+      <div class="gallery-hint">
+        Ketuk untuk lihat foto berikutnya
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer id="footer-section">
+
+    <div class="signature">
+
+      Dari yang Mencintaimu,
+
+      <br>
+
+      <span
+        class="from-edit"
+        contenteditable="true"
+        data-key="bday-from"
+        spellcheck="false"
+      >
+        M Raihan Alfarizi
+      </span>
+
+    </div>
+
+  </footer>
+
+
+</main>
+
+
+<script>
+
+(function(){
+
+
+  /* ==========================
+     FLOATING PETALS
+  ========================== */
+
+  var petalsEl =
+    document.getElementById(
+      'petals'
+    );
+
+  var symbols = [
+    '♡',
+    '✿',
+    '❀'
+  ];
+
+  var count =
+    window.innerWidth < 500
+      ? 10
+      : 16;
+
+
+  for(
+    var i=0;
+    i<count;
+    i++
+  ){
+
+    var p =
+      document.createElement(
+        'span'
+      );
+
+    p.className =
+      'petal';
+
+    p.textContent =
+      symbols[
+        i % symbols.length
+      ];
+
+    p.style.left =
+      (
+        Math.random()*100
+      )
+      + 'vw';
+
+    p.style.setProperty(
+      '--drift',
+      (
+        Math.random()*60-30
+      )
+      + 'px'
+    );
+
+    p.style.animationDuration =
+      (
+        10 +
+        Math.random()*10
+      )
+      + 's';
+
+    p.style.animationDelay =
+      (
+        Math.random()*10
+      )
+      + 's';
+
+    p.style.color =
+      Math.random() > 0.5
+        ? '#e2a3b6'
+        : '#cf9a5f';
+
+    p.style.fontSize =
+      (
+        12 +
+        Math.random()*10
+      )
+      + 'px';
+
+    petalsEl.appendChild(p);
+
+  }
+
+
+  /* ==========================
+     PERSISTENCE
+  ========================== */
+
+  function safeGet(
+    key,
+    fallback
+  ){
+
+    try{
+
+      var v =
+        localStorage.getItem(
+          key
+        );
+
+      return v === null
+        ? fallback
+        : v;
+
+    }
+
+    catch(e){
+
+      return fallback;
+
+    }
+
+  }
+
+
+  function safeSet(
+    key,
+    value
+  ){
+
+    try{
+
+      localStorage.setItem(
+        key,
+        value
+      );
+
+    }
+
+    catch(e){}
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '[data-key]'
+    )
+    .forEach(
+      function(el){
+
+        var key =
+          el.getAttribute(
+            'data-key'
+          );
+
+        var saved =
+          safeGet(
+            key,
+            null
+          );
+
+
+        if(saved !== null){
+
+          el.textContent =
+            saved;
+
+        }
+
+
+        el.addEventListener(
+          'input',
+          function(){
+
+            safeSet(
+              key,
+              el.textContent
+            );
+
+          }
+        );
+
+
+        el.addEventListener(
+          'focus',
+          function(){
+
+            if(
+              document.execCommand
+            ){
+
+              var range =
+                document.createRange();
+
+              range.selectNodeContents(
+                el
+              );
+
+              var sel =
+                window.getSelection();
+
+              sel.removeAllRanges();
+
+              sel.addRange(
+                range
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+  /* ==========================
+     MEMORY
+  ========================== */
+
+  var savedMemories =
+    safeGet(
+      'bday-memories',
+      null
+    );
+
+  var memoryList =
+    document.getElementById(
+      'memory-list'
+    );
+
+
+  if(savedMemories){
+
+    try{
+
+      var arr =
+        JSON.parse(
+          savedMemories
+        );
+
+      if(arr.length){
+
+        memoryList.innerHTML =
+          '';
+
+        arr.forEach(
+          function(text){
+
+            addMemoryItem(
+              text
+            );
+
+          }
+        );
+
+      }
+
+    }
+
+    catch(e){}
+
+  }
+
+
+  function persistMemories(){
+
+    var items =
+      Array.from(
+        memoryList.querySelectorAll(
+          '.memory-edit'
+        )
+      )
+      .map(
+        function(el){
+
+          return el.textContent;
+
+        }
+      );
+
+
+    safeSet(
+      'bday-memories',
+      JSON.stringify(
+        items
+      )
+    );
+
+  }
+
+
+  function addMemoryItem(
+    text
+  ){
+
+    var li =
+      document.createElement(
+        'li'
+      );
+
+    var span =
+      document.createElement(
+        'span'
+      );
+
+    span.className =
+      'memory-edit';
+
+    span.contentEditable =
+      'true';
+
+    span.spellcheck =
+      false;
+
+    span.textContent =
+      text ||
+      'Tulis sesuatu yang kamu suka darinya...';
+
+
+    span.addEventListener(
+      'input',
+      persistMemories
+    );
+
+
+    li.appendChild(
+      span
+    );
+
+    memoryList.appendChild(
+      li
+    );
+
+
+    return span;
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '.memory-edit'
+    )
+    .forEach(
+      function(el){
+
+        el.addEventListener(
+          'input',
+          persistMemories
+        );
+
+      }
+    );
+
+
+  /* ==========================
+     PHOTO GALLERY
+  ========================== */
+
+  var stage =
+    document.getElementById(
+      'polaroid-stage'
+    );
+
+  var dotsWrap =
+    document.getElementById(
+      'gallery-dots'
+    );
+
+
+  var photos = [
+
+    {
+      src:"foto/foto1.jpeg",
+      caption:
+        "Pertemuan pertama menjadi sebuah awal, awal dari banyak cerita, tawa, dan kenangan indah."
+    },
+
+    {
+      src:"foto/foto2.jpeg",
+      caption:
+        "Dari pertemuan pertama, tumbuh rasa yang perlahan menjadi alasan untuk terus bertemu"
+    },
+
+    {
+      src:"foto/foto3.jpeg",
+      caption:
+        "Hingga Akhirnya ... "
+    },
+
+    {
+      src:"foto/foto4.jpeg",
+      caption:
+        "Setiap pertemuan terasa seperti rumah, dan setiap perpisahan membuatku ingin segera kembali"
+    },
+
+    {
+      src:"foto/foto5.jpeg",
+      caption:
+        "Karena Ternyata ..."
+    },
+
+    {
+      src:"foto/foto6.jpeg",
+      caption:
+        "bukan tempat yang membuatku merasa pulang, melainkan seseorang yang ada di dalamnya "
+    },
+
+    {
+      src:"foto/foto7.jpeg",
+      caption:
+        " KAMU ❤️❤️"
+    },
+
+    {
+      src:"foto/foto8.jpeg",
+      caption:
+        "Seseorang yang bernama Neng Rina "
+    },
+
+    {
+      src:"foto/foto9.jpeg",
+      caption:
+        "Seseorang yang bukan hanya hadir untuk menemani, tetapi juga mengajarkanku arti pendewasaan, kesabaran, pengertian."
+    },
+
+    {
+      src:"foto/foto10.jpeg",
+      caption:
+        "Dan Bagaimana mencintai dengan cara yang lebih sederhana namun berarti"
+    },
+
+    {
+      src:"foto/foto11.jpeg",
+      caption:
+        "Thank You for being a part pf my story ❤️❤️❤️"
+    }
+
+  ];
+
+
+  var cardEls = [];
+
+  var order = [];
+
+
+  function buildStage(){
+
+    stage.innerHTML =
+      '';
+
+    dotsWrap.innerHTML =
+      '';
+
+    cardEls = [];
+
+    order =
+      photos.map(
+        function(_, i){
+          return i;
+        }
+      );
+
+
+    photos.forEach(
+      function(p, i){
+
+        var card =
+          document.createElement(
+            'div'
+          );
+
+        card.className =
+          'polaroid has-img';
+
+        card.dataset.index =
+          i;
+
+
+        var frame =
+          document.createElement(
+            'div'
+          );
+
+        frame.className =
+          'frame';
+
+
+        var img =
+          document.createElement(
+            'img'
+          );
+
+        img.src =
+          p.src;
+
+        img.alt =
+          p.caption;
+
+        img.loading =
+          i === 0
+            ? 'eager'
+            : 'lazy';
+
+
+        var caption =
+          document.createElement(
+            'div'
+          );
+
+        caption.className =
+          'caption';
+
+        caption.textContent =
+          p.caption;
+
+
+        frame.appendChild(
+          img
+        );
+
+        card.appendChild(
+          frame
+        );
+
+        card.appendChild(
+          caption
+        );
+
+        stage.appendChild(
+          card
+        );
+
+
+        cardEls[i] =
+          card;
+
+
+        card.addEventListener(
+          'click',
+          function(){
+
+            if(
+              order[0] == i
+            ){
+
+              cycleFront();
+
+            }
+
+          }
+        );
+
+
+        var startX =
+          null;
+
+
+        card.addEventListener(
+          'pointerdown',
+          function(ev){
+
+            if(
+              order[0] != i
+            ){
+
+              return;
+
+            }
+
+            startX =
+              ev.clientX;
+
+          }
+        );
+
+
+        card.addEventListener(
+          'pointerup',
+          function(ev){
+
+            if(
+              startX === null ||
+              order[0] != i
+            ){
+
+              return;
+
+            }
+
+
+            var dx =
+              ev.clientX -
+              startX;
+
+
+            startX =
+              null;
+
+
+            if(
+              Math.abs(dx) > 40
+            ){
+
+              cycleFront();
+
+            }
+
+          }
+        );
+
+
+        var dot =
+          document.createElement(
+            'span'
+          );
+
+        dotsWrap.appendChild(
+          dot
+        );
+
+      }
+    );
+
+
+    layoutStage();
+
+  }
+
+
+  function layoutStage(){
+
+    order.forEach(
+      function(
+        photoIndex,
+        pos
+      ){
+
+        var card =
+          cardEls[
+            photoIndex
+          ];
+
+        var depth =
+          pos;
+
+        var rot =
+          (
+            photoIndex % 2 === 0
+              ? 1
+              : -1
+          )
+          *
+          (
+            depth === 0
+              ? 0
+              : 3 + depth * 1.5
+          );
+
+        var scale =
+          1 -
+          depth * 0.05;
+
+        var translateY =
+          depth * 10;
+
+
+        card.style.zIndex =
+          photos.length -
+          depth;
+
+
+        card.style.transform =
+          'translateY(' +
+          translateY +
+          'px) scale(' +
+          scale +
+          ') rotate(' +
+          rot +
+          'deg)';
+
+
+        card.style.opacity =
+          depth > 3
+            ? 0
+            : 1;
+
+
+        card.style.pointerEvents =
+          depth === 0
+            ? 'auto'
+            : 'none';
+
+      }
+    );
+
+
+    Array
+      .from(
+        dotsWrap.children
+      )
+      .forEach(
+        function(dot, i){
+
+          dot.classList.toggle(
+            'active',
+            order[0] === i
+          );
+
+        }
+      );
+
+  }
+
+
+  function cycleFront(){
+
+    var front =
+      cardEls[
+        order[0]
+      ];
+
+
+    front.style.transition =
+      'transform .55s cubic-bezier(.5,-0.2,.4,1.3), opacity .4s ease';
+
+
+    front.style.transform =
+      'translateY(-70px) translateX(30px) rotate(24deg) scale(0.9)';
+
+
+    front.style.opacity =
+      '0';
+
+
+    setTimeout(
+      function(){
+
+        order.push(
+          order.shift()
+        );
+
+
+        front.style.transition =
+          'none';
+
+
+        layoutStage();
+
+
+        requestAnimationFrame(
+          function(){
+
+            front.style.transition =
+              'transform .6s cubic-bezier(.6,0,.25,1), opacity .5s ease';
+
+          }
+        );
+
+      },
+      380
+    );
+
+  }
+
+
+  buildStage();
+
+
+  /* ==========================
+     HERO BACKGROUND
+  ========================== */
+
+  var heroPhoto =
+    document.getElementById(
+      'hero-photo'
+    );
+
+  var heroPhotoImg =
+    document.getElementById(
+      'hero-photo-img'
+    );
+
+
+  heroPhoto.classList.add(
+    'has-img'
+  );
+
+
+  heroPhotoImg.src =
+    'foto/background.jpeg';
+
+
+  /* ==========================
+     MUSIC
+  ========================== */
+
+  var bgm =
+    document.getElementById(
+      'bgm'
+    );
+
+  var musicBtn =
+    document.getElementById(
+      'music-toggle'
+    );
+
+  var musicPlaying =
+    false;
+
+
+  function setMusicState(
+    playing
+  ){
+
+    musicPlaying =
+      playing;
+
+    musicBtn.textContent =
+      playing
+        ? '🔊'
+        : '🎵';
+
+    musicBtn.classList.toggle(
+      'playing',
+      playing
+    );
+
+  }
+
+
+  musicBtn.addEventListener(
+    'click',
+    function(){
+
+      if(musicPlaying){
+
+        bgm.pause();
+
+        setMusicState(
+          false
+        );
+
+      }
+
+      else{
+
+        bgm
+          .play()
+          .then(
+            function(){
+
+              setMusicState(
+                true
+              );
+
+            }
+          )
+          .catch(
+            function(){
+
+              setMusicState(
+                false
+              );
+
+            }
+          );
+
+      }
+
+    }
+  );
+
+
+  /* ==========================
+     ENVELOPE
+  ========================== */
+
+  var envelope =
+    document.getElementById(
+      'envelope'
+    );
+
+  var opened =
+    false;
+
+
+  var sections =
+    [
+      'letter-section',
+      'memories-section',
+      'photo-section',
+      'footer-section'
+    ]
+    .map(
+      function(id){
+
+        return document.getElementById(
+          id
+        );
+
+      }
+    );
+
+
+  envelope.addEventListener(
+    'click',
+    function(){
+
+      opened =
+        !opened;
+
+
+      envelope.classList.toggle(
+        'open',
+        opened
+      );
+
+
+      if(opened){
+
+        burstConfetti();
+
+
+        if(!musicPlaying){
+
+          bgm
+            .play()
+            .then(
+              function(){
+
+                setMusicState(
+                  true
+                );
+
+              }
+            )
+            .catch(
+              function(){}
+            );
+
+        }
+
+
+        setTimeout(
+          function(){
+
+            sections.forEach(
+              function(
+                s,
+                idx
+              ){
+
+                setTimeout(
+                  function(){
+
+                    s.classList.add(
+                      'revealed'
+                    );
+
+                  },
+                  idx * 140
+                );
+
+              }
+            );
+
+          },
+          500
+        );
+
+      }
+
+      else{
+
+        sections
+          .slice()
+          .reverse()
+          .forEach(
+            function(
+              s,
+              idx
+            ){
+
+              setTimeout(
+                function(){
+
+                  s.classList.remove(
+                    'revealed'
+                  );
+
+                },
+                idx * 90
+              );
+
+            }
+          );
+
+      }
+
+    }
+  );
+
+
+  /* ==========================
+     CONFETTI
+  ========================== */
+
+  function burstConfetti(){
+
+    var symbols = [
+      '🎀',
+      '✨',
+      '🎈',
+      '🌸',
+      '♡'
+    ];
+
+
+    var n =
+      window.innerWidth < 500
+        ? 18
+        : 28;
+
+
+    for(
+      var i=0;
+      i<n;
+      i++
+    ){
+
+      (function(){
+
+        var c =
+          document.createElement(
+            'span'
+          );
+
+        c.className =
+          'confetti-piece';
+
+        c.textContent =
+          symbols[
+            Math.floor(
+              Math.random() *
+              symbols.length
+            )
+          ];
+
+        c.style.left =
+          (
+            Math.random()*100
+          )
+          + 'vw';
+
+        c.style.fontSize =
+          (
+            14 +
+            Math.random()*14
+          )
+          + 'px';
+
+        c.style.animationDelay =
+          (
+            Math.random()*0.4
+          )
+          + 's';
+
+        c.style.animationDuration =
+          (
+            2 +
+            Math.random()*1.4
+          )
+          + 's';
+
+
+        document.body.appendChild(
+          c
+        );
+
+
+        setTimeout(
+          function(){
+
+            c.remove();
+
+          },
+          4200
+        );
+
+      })();
+
+    }
+
+  }
+  // =============================
+// PEMBUKA MUSIK
+// =============================
+
+const startScreen = document.getElementById("music-start");
+const startButton = document.getElementById("start-button");
+const birthdayMusic = document.getElementById("bgm");
+
+if (startButton && startScreen && birthdayMusic) {
+
+    startButton.addEventListener("click", function () {
+
+        birthdayMusic.volume = 0.7;
+
+        birthdayMusic.play()
+            .then(function () {
+
+                // Hilangkan layar pembuka
+                startScreen.style.opacity = "0";
+
+                setTimeout(function () {
+                    startScreen.style.display = "none";
+                }, 500);
+
+            })
+            .catch(function (error) {
+
+                console.error("Musik gagal diputar:", error);
+
+            });
+
+    });
+
+}
+
+
+})();
+
+</script>
+
+</body>
+</html>
